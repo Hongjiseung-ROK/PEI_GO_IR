@@ -245,15 +245,22 @@ def assign_peak(peak_wn, sample_name=""):
     
     exclude_N = (sample_name == "GO")
     exclude_O = (sample_name == "PEI")
-    
+    # ATR candidates (cyclohexane, n-heptane, trans-2-butene, 1-butyne) are all C,H only
+    ch_only = ("ATR" in sample_name)
+
+    # Bonds allowed for C,H-only molecules
+    CH_BONDS = {"C-H", "=C-H", "C=C", "C≡C", "CH2", "CH3", "Ring"}
+
     for band in BANDS:
         bond = band[3]
         desc = band[4]
-        
+
         # Enforce chemical formula constraints
         if exclude_N and ("N" in bond or "Amide" in desc or "Amine" in desc or "Nitrile" in desc):
             continue
         if exclude_O and ("O" in bond or "Acid" in desc or "Alcohol" in desc or "Ester" in desc or "Aldehyde" in desc or "Phenol" in desc or "Epoxy" in desc):
+            continue
+        if ch_only and bond not in CH_BONDS:
             continue
             
         s = score_assignment(peak_wn, band)
