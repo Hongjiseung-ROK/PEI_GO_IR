@@ -132,11 +132,11 @@ The **879 cm⁻¹ ring deformation peak is the strongest feature in the entire f
 >
 > The spectrum shows exclusively saturated C-H stretching (2929/2856 cm⁻¹) and CH₂ scissoring (1450 cm⁻¹) with no unsaturated bond signatures. The fingerprint region conclusively identifies a cyclic structure: the dominant ring deformation at 879 cm⁻¹ matches the vibrational mode of the cyclohexane chair conformation.
 
-#### DFT Validation — B3LYP/def2-TZVP Chair Form
+#### DFT Validation — B3LYP/def2-TZVP
 
 ![DFT vs ATR comparison](figures/dft_vs_atr_cyclohexane_chair.png)
 
-To further corroborate the identification, the ATR spectrum was compared against a DFT-calculated IR spectrum of cyclohexane in its chair conformation (B3LYP/def2-TZVP). DFT harmonic frequencies are systematically blueshifted relative to experiment due to the neglect of anharmonicity; an optimal scaling factor was determined by least-squares fitting of matched peak positions.
+To further corroborate the identification, the ATR spectrum was compared against a DFT-calculated IR spectrum of cyclohexane (B3LYP/def2-TZVP). DFT harmonic frequencies are systematically blueshifted relative to experiment due to the neglect of anharmonicity; an optimal scaling factor was determined by least-squares fitting of matched peak positions.
 
 | Mode | DFT (cm⁻¹) | Scaled (cm⁻¹) | ATR Exp. (cm⁻¹) | Error |
 |------|-----------|--------------|-----------------|-------|
