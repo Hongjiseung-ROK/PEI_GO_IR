@@ -88,37 +88,49 @@ Three spectroscopic signatures conclusively demonstrate covalent PEI-GO bonding 
 
 ![Unknown ATR spectrum](figures/tagged_Unknown_ATR.png)
 
-| Candidate | Structure | Key IR Features |
-|-----------|-----------|-----------------|
-| (a) Cyclohexane | C₆H₁₂ (ring) | C-H str. ~2930, CH₂ scissors ~1450, ring deform. ~860–900 |
-| (b) n-Heptane | C₇H₁₆ (chain) | C-H str. ~2930, CH₂ scissors ~1450, CH₂ rock ~720 |
-| (c) trans-2-Butene | C₄H₈ (alkene) | =C-H ~3020, C=C ~1670 |
-| (d) 1-Butyne | C₄H₆ (alkyne) | ≡C-H ~3300, C≡C ~2150 |
+All four candidates consist exclusively of carbon and hydrogen atoms. The scoring algorithm therefore **excludes all non-C,H bands** (O-H, N-H, C-O, C=O, C-N, C-Cl, etc.) so that only hydrocarbon-relevant vibrations are considered.
 
-#### Diagnostic Peak Analysis
+| Candidate | Structure | Distinguishing IR Features |
+|-----------|-----------|---------------------------|
+| (a) Cyclohexane | C₆H₁₂ (ring) | C-H str. ~2930, CH₂ scissors ~1450, **ring deform. ~860–900** |
+| (b) n-Heptane | C₇H₁₆ (chain) | C-H str. ~2930, CH₂ scissors ~1450, **CH₂ rock ~720, CH₃ bend ~1378** |
+| (c) trans-2-Butene | C₄H₈ (alkene) | **=C-H ~3020, C=C ~1670** |
+| (d) 1-Butyne | C₄H₆ (alkyne) | **≡C-H ~3300, C≡C ~2150** |
 
-| Peak (cm⁻¹) | Assignment | Diagnostic Value |
-|-------------|------------|-----------------|
-| **2929** | C-H alkane stretch (96%) | Saturated C-H — rules out unsaturated candidates |
-| **2856** | C-H alkane stretch (15%) | Symmetric CH₂ stretch — confirms alkane |
-| **1450** | CH₂ scissoring (80%) | Methylene groups |
-| **879** | Ring deformation (prom. = 5.03) | **Strongest fingerprint peak** — cyclohexane ring breathing mode |
-| **731** | CH₂ rocking (prom. = 1.70) | Present but 3x weaker than 879 peak |
+#### Detected Peaks (C,H-only scoring)
 
-#### Elimination Logic
+| Peak (cm⁻¹) | Assignment | Confidence | Interpretation |
+|-------------|------------|------------|----------------|
+| **2929** | C-H Alkane str. | 96% | Asymmetric CH₂ stretch — dominant peak, saturated hydrocarbon |
+| **2856** | C-H Alkane str. | 15% | Symmetric CH₂ stretch |
+| **1450** | CH₂ scissoring | 80% | Methylene bending — abundant CH₂ groups |
+| 3001 | =C-H Alkene / Aromatic | 23% | Very weak; baseline artifact, not a real absorption |
+| 1680 | C=C Alkene str. | 20% | Very weak; baseline artifact, not a real absorption |
 
-- **No C≡C stretch (~2150 cm⁻¹) and no ≡C-H stretch (~3300 cm⁻¹)** → **(d) 1-Butyne eliminated**
-- **No C=C stretch (~1640–1680 cm⁻¹) and no =C-H stretch (~3020 cm⁻¹)** → **(c) trans-2-Butene eliminated**
-- Both (a) and (b) show C-H alkane stretch + CH₂ scissoring. The distinction lies in the **fingerprint region (600–1000 cm⁻¹)**:
-  - The **879 cm⁻¹ peak** (prominence = 5.03) is the dominant fingerprint feature — this is the **ring deformation / CH₂ rocking mode specific to the cyclohexane chair conformation**
-  - The 731 cm⁻¹ CH₂ rocking peak, while present, has only 1/3 the prominence. In pure n-heptane, this would be the dominant fingerprint peak, not a secondary one
-  - n-Heptane should also show a clear CH₃ symmetric bend at ~1378 cm⁻¹, which is absent
+The three high-confidence peaks (2929, 2856, 1450 cm⁻¹) form a pure saturated alkane signature. The two low-confidence detections (3001, 1680) fall below the noise floor and are not reproducible absorptions.
 
-#### Conclusion
+#### Supplementary Fingerprint Analysis (600–1000 cm⁻¹)
+
+The fingerprint region below 1000 cm⁻¹ was analyzed separately to distinguish (a) cyclohexane from (b) n-heptane:
+
+| Peak (cm⁻¹) | Prominence | Assignment |
+|-------------|-----------|------------|
+| **879** | **5.03** | Ring deformation — cyclohexane chair puckering mode |
+| 824 | 0.59 | Ring deformation |
+| 731 | 1.70 | CH₂ rocking |
+| 681 | 0.16 | Ring skeletal |
+
+The **879 cm⁻¹ ring deformation peak is the strongest feature in the entire fingerprint region** (prominence = 5.03), 3x more intense than the 731 cm⁻¹ CH₂ rocking peak. This pattern is characteristic of the cyclohexane chair conformation. In contrast, n-heptane's fingerprint is dominated by a single strong CH₂ rocking band at ~720 cm⁻¹ with no ring modes. Additionally, n-heptane's expected CH₃ symmetric bend at ~1378 cm⁻¹ is absent.
+
+#### Elimination and Conclusion
+
+1. **No C≡C (~2150) or ≡C-H (~3300)** → **(d) 1-Butyne eliminated**
+2. **No C=C (~1640–1680) or =C-H (~3020) above noise** → **(c) trans-2-Butene eliminated**
+3. **Ring deformation at 879 cm⁻¹ dominates fingerprint; no CH₃ bend at 1378** → **(b) n-Heptane eliminated**
 
 > **The unknown sample is (a) Cyclohexane (C₆H₁₂).**
 >
-> The spectrum is dominated by saturated C-H stretching (2929/2856 cm⁻¹) and CH₂ scissoring (1450 cm⁻¹) with no unsaturated bond signatures. The fingerprint region conclusively identifies a cyclic structure: the ring deformation mode at 879 cm⁻¹ is 3x more prominent than the 731 cm⁻¹ peak, matching the characteristic vibrational pattern of the cyclohexane chair conformation.
+> The spectrum shows exclusively saturated C-H stretching (2929/2856 cm⁻¹) and CH₂ scissoring (1450 cm⁻¹) with no unsaturated bond signatures. The fingerprint region conclusively identifies a cyclic structure: the dominant ring deformation at 879 cm⁻¹ matches the vibrational mode of the cyclohexane chair conformation.
 
 ---
 
@@ -146,7 +158,7 @@ tag_peaks.py
 ├── Stage 3: Weighted Functional Group Scoring
 │   ├── 26-band reference table with diagnostic weights
 │   ├── Gaussian proximity scoring (center-weighted)
-│   └── Chemical constraints (GO: exclude N-bands, PEI: exclude O-bands)
+│   └── Chemical constraints (GO: C,H,O only; PEI: C,H,N only; ATR: C,H only)
 └── Stage 4: Annotated Plotting
     └── Tier-based label collision avoidance
 ```
@@ -178,7 +190,6 @@ numpy pandas scipy matplotlib pybaselines openpyxl
 |------|-------------|
 | `data/IR_data.xlsx` | KBr pellet FT-IR data (Wavenumber, GO, PEI, PEI@GO) |
 | `data/ATR_result.CSV` | ATR transmittance data (wavenumber, %T) |
-| `guide.md` | Experiment instructions and IR reference table |
 
 ## References
 
