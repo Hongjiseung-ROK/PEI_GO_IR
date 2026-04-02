@@ -134,7 +134,7 @@ The **879 cm⁻¹ ring deformation peak is the strongest feature in the entire f
 
 #### DFT Validation — B3LYP/def2-TZVP
 
-![DFT vs ATR comparison](figures/dft_vs_atr_cyclohexane_chair.png)
+![DFT vs ATR comparison](figures/dft_vs_atr_cyclohexane.png)
 
 To further corroborate the identification, the ATR spectrum was compared against a DFT-calculated IR spectrum of cyclohexane (B3LYP/def2-TZVP). DFT harmonic frequencies are systematically blueshifted relative to experiment due to the neglect of anharmonicity; an optimal scaling factor was determined by least-squares fitting of matched peak positions.
 
