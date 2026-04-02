@@ -132,6 +132,22 @@ The **879 cm⁻¹ ring deformation peak is the strongest feature in the entire f
 >
 > The spectrum shows exclusively saturated C-H stretching (2929/2856 cm⁻¹) and CH₂ scissoring (1450 cm⁻¹) with no unsaturated bond signatures. The fingerprint region conclusively identifies a cyclic structure: the dominant ring deformation at 879 cm⁻¹ matches the vibrational mode of the cyclohexane chair conformation.
 
+#### DFT Validation — B3LYP/def2-TZVP Chair Form
+
+![DFT vs ATR comparison](figures/dft_vs_atr_cyclohexane_chair.png)
+
+To further corroborate the identification, the ATR spectrum was compared against a DFT-calculated IR spectrum of cyclohexane in its chair conformation (B3LYP/def2-TZVP). DFT harmonic frequencies are systematically blueshifted relative to experiment due to the neglect of anharmonicity; an optimal scaling factor was determined by least-squares fitting of matched peak positions.
+
+| Mode | DFT (cm⁻¹) | Scaled (cm⁻¹) | ATR Exp. (cm⁻¹) | Error |
+|------|-----------|--------------|-----------------|-------|
+| C-H equatorial stretch | 3094 | 2926 | 2929 | **-3** |
+| C-H axial stretch | 3086 | 2918 | 2929 | -11 |
+| C-H symmetric stretch | 3036 | 2871 | 2856 | +15 |
+
+**Optimal scaling factor: 0.9456** (RMSE = 10.8 cm⁻¹)
+
+The equatorial C-H stretch (3094 cm⁻¹) scales to 2926 cm⁻¹ — only 3 cm⁻¹ from the experimental 2929 peak. The near-degeneracy of the equatorial/axial pair (3094/3086) is consistent with the single unresolved ATR peak at 2929 cm⁻¹. The symmetric stretch at 3036 → 2871 cm⁻¹ matches the experimental 2856 cm⁻¹ within 15 cm⁻¹. The scaling factor of 0.9456 is physically reasonable — slightly below the NIST literature value of 0.9659 for B3LYP/def2-TZVP, reflecting the stronger anharmonicity of C-H stretching modes compared to the global average.
+
 ---
 
 ### 5. Overlay Comparison
@@ -169,13 +185,8 @@ tag_peaks.py
 # Run full pipeline
 python3 tag_peaks.py
 
-# Outputs:
-#   data/tagged_peaks.csv          — all peaks with assignments and confidence scores
-#   figures/tagged_GO.png          — annotated GO spectrum
-#   figures/tagged_PEI.png         — annotated PEI spectrum
-#   figures/tagged_PEI_GO.png      — annotated PEI@GO spectrum
-#   figures/tagged_Unknown_ATR.png — annotated unknown (ATR) spectrum
-#   figures/tagged_overlay.png     — stacked comparison of all 4 spectra
+# DFT vs experimental comparison (cyclohexane chair/boat)
+python3 dft_atr_compare.py
 ```
 
 ### Dependencies
